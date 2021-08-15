@@ -1,9 +1,10 @@
 import React from 'react';
+import 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import AppLoading from 'expo-app-loading';
+import { NavigationContainer } from '@react-navigation/native';
 
-import { Dashboard } from './scr/screens/Dashboard';
-import { Register } from './scr/screens/Register';
+import { AppRoutes } from './scr/routes/app.routes';
 
 import { ThemeProvider } from 'styled-components';
 import theme from './scr/global/styles/theme';
@@ -37,7 +38,9 @@ export default function App() {
           barStyle="light-content"
         />
 
-        <Register/>
+        <NavigationContainer>
+          <AppRoutes />
+        </NavigationContainer>
 
       </ThemeProvider>
     </>

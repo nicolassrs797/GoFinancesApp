@@ -77,7 +77,7 @@ export function Dashboard() {
                         </User>
                     </UserInfo>
 
-                    <IconWrapper>
+                    <IconWrapper onPress={() => {}}>
                         <Icon name="power"/>
                     </IconWrapper>
 
@@ -113,7 +113,7 @@ export function Dashboard() {
 
             <Transactions>
 
-                <Title>Listagem</Title>
+                <Title>Últimos Registros</Title>
 
                 <TransactionList
                     data={dataList}

@@ -7,7 +7,7 @@ interface TransactionType {
 };
 
 export let Container = styled.View`
-    background-color: ${({theme}) => theme.colors.shape};
+    background-color: ${({theme}) => theme.colors.shapeCards};
     padding: ${RFValue(0)}px  ${RFValue(24)}px;
     padding-top: ${RFValue(17)}px;
     margin-bottom: ${RFValue(16)}px;
@@ -17,7 +17,7 @@ export let Container = styled.View`
 export let Title = styled.Text`
     font-family: ${({theme}) => theme.fonts.regular};
     font-size: ${RFValue(14)}px;
-    color: ${({theme}) => theme.colors.title};
+    color: ${({theme}) => theme.colors.shapeGrey};
 `;
 
 export let Amount = styled.Text<TransactionType>`

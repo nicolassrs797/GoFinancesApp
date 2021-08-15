@@ -2,7 +2,8 @@ import styled from 'styled-components/native';
 import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
-import { FlatList } from 'react-native';
+import { FlatList, TouchableOpacity } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { DataListProps } from '.';
 
@@ -53,7 +54,9 @@ export let UserName = styled.Text`
     font-size: ${RFValue(18)}px;
 `;
 
-export let IconWrapper = styled.View`
+export let IconWrapper = styled(RectButton).attrs({
+    activeOpacity: 0.7
+})`
     height: ${RFValue(40)}px;
     width: ${RFValue(40)}px;
     background-color: ${({theme}) => theme.colors.attentionExit};
@@ -80,7 +83,7 @@ export let HighlightCards = styled.ScrollView.attrs({
 export let Transactions = styled.View`
     flex: 1;
     padding: ${RFValue(0)}px ${RFValue(24)}px;
-    margin-top : ${RFPercentage(12)}px;
+    margin-top : ${RFPercentage(23)}px;
 `;
 
 export let Title   = styled.Text`

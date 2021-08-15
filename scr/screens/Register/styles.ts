@@ -28,6 +28,10 @@ export let FormWrapper = styled.View`
     padding: ${RFValue(24)}px;
 `;
 
-export let CategorySelect = styled(TouchableOpacity)`
+export let TypeSelectorWrapper = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
 
+    margin-top: ${RFValue(8)}px;
+    margin-bottom: ${RFValue(16)}px;
 `;

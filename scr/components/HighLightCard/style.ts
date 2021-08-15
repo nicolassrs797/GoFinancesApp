@@ -12,7 +12,7 @@ export let Container = styled.View<CardProps>`
         type === 'total' ?
             theme.colors.successLL
         :
-            theme.colors.shape
+            theme.colors.shapeCards
     };
     width: ${RFValue(280)}px;
     margin-right: ${RFValue(16)}px;
@@ -21,7 +21,7 @@ export let Container = styled.View<CardProps>`
     border-top-width: 2px;
     border-left-width: 2px;
     border-color: ${({theme}) => theme.colors.primaryDarkB};
-    border-radius: 5px;
+    border-radius: 8px;
 `;
 
 export let Details = styled.View`
@@ -38,7 +38,7 @@ export let Title = styled.Text<CardProps>`
         type === 'total' ?
             theme.colors.shape
         :
-            theme.colors.title
+            theme.colors.shape
     };
 `;
 
@@ -49,7 +49,7 @@ export let Icon = styled(Feather)<CardProps>`
             theme.colors.shape
         :
             type === 'down' ?
-                theme.colors.success
+                theme.colors.successLL
             :
                 theme.colors.attention
     };
@@ -65,7 +65,7 @@ export let Amount = styled.Text<CardProps>`
         type === 'total' ?
             theme.colors.shape
         :
-            theme.colors.title
+            theme.colors.shapeGrey
     };
 `;
 
@@ -75,7 +75,7 @@ export let ValueAmount = styled.Text<CardProps>`
         type === 'total' ?
             theme.colors.shape
         :
-            theme.colors.title
+            theme.colors.shapeGrey
     };
 `;
 

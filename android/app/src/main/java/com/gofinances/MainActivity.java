@@ -38,4 +38,12 @@ public class MainActivity extends ReactActivity {
             }
         };
     }
+
+    // React Navigation instructed script to avoid crashes related to View state not being
+    // persisted consistently across Activity restarts
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+    }
 }
