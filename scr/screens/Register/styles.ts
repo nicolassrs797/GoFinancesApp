@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
-import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
+import { RFValue } from 'react-native-responsive-fontsize';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
-import { TouchableOpacity } from 'react-native';
 
 export let Container = styled.View`
     flex: 1;

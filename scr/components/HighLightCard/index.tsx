@@ -7,7 +7,6 @@ import {
     Icon,
     Content,
     Amount,
-    ValueAmount,
     LastTransaction
 } from './style';
 
@@ -15,7 +14,6 @@ interface Props {
     title: string;
     type: 'up' | 'down' | 'total';
     amount: string;
-    cents: string;
     lastTransaction: string;
 };
 
@@ -29,7 +27,6 @@ export function HighLightCard({
     title,
     type,
     amount,
-    cents,
     lastTransaction,
 }: Props){
     return (
@@ -43,10 +40,7 @@ export function HighLightCard({
             <Content>
 
                 <Amount type={type}>
-                    R$ <ValueAmount type={type}>
-                            {amount}
-                        </ValueAmount>
-                    ,{cents}
+                    {amount}
                 </Amount>
 
                 <LastTransaction type={type}>{lastTransaction}</LastTransaction>

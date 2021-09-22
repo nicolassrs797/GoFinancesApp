@@ -5,6 +5,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 import { Dashboard } from '../screens/Dashboard';
 import { Register } from '../screens/Register';
+import { Summary } from '../screens/Summary';
 
 import theme from '../global/styles/theme';
 import { Feather } from '@expo/vector-icons';
@@ -23,9 +24,21 @@ export function AppRoutes() {
                 tabBarStyle: {
                     borderTopWidth: 0,
                     height: getBottomSpace()+RFValue(50),
-                    paddingVertical: Platform.OS === 'ios' ? 20 : 0
+                    paddingVertical: Platform.OS === 'ios' ? 20 : 0,
+                    backgroundColor: theme.colors.primaryDark
+                },
+                tabBarLabelStyle: {
+                    fontFamily: theme.fonts.medium,
+                    fontSize: RFValue(10),
                 },
                 tabBarLabelPosition: 'beside-icon',
+                tabBarItemStyle: {
+                    borderColor: theme.colors.primary,
+                    borderLeftWidth: 0.5,
+                    borderRightWidth: 0.5,
+                    borderTopWidth: 0.5,
+                    marginHorizontal: -1
+                }
             }}
         >
 
@@ -34,13 +47,13 @@ export function AppRoutes() {
                 component={Dashboard}
                 options={{
                     headerShown: false,
-                    tabBarIcon: (({size, color}) => (
+                    tabBarIcon: (({color}) => (
                         <Feather
-                            size={size}
+                            size={RFValue(16)}
                             name="home"
                             color={color}
                         />
-                    ))
+                    )),
                 }}
             />
 
@@ -49,9 +62,9 @@ export function AppRoutes() {
                 component={Register}
                 options={{
                     headerShown: false,
-                    tabBarIcon: (({size, color}) => (
+                    tabBarIcon: (({color}) => (
                         <Feather
-                            size={size}
+                            size={RFValue(16)}
                             name="dollar-sign"
                             color={color}
                         />
@@ -61,12 +74,12 @@ export function AppRoutes() {
 
             <Screen
                 name="Resumo"
-                component={Register}
+                component={Summary}
                 options={{
                     headerShown: false,
-                    tabBarIcon: (({size, color}) => (
+                    tabBarIcon: (({color}) => (
                         <Feather
-                            size={size}
+                            size={RFValue(16)}
                             name="pie-chart"
                             color={color}
                         />

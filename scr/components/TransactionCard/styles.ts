@@ -3,7 +3,11 @@ import { RFPercentage, RFValue } from 'react-native-responsive-fontsize';
 import { Feather } from '@expo/vector-icons';
 
 interface TransactionType {
-    type: 'positive' | 'negative'
+    type: 'up' | 'down'
+};
+
+interface CategoryIcons {
+    iconColor: string;
 };
 
 export let Container = styled.View`
@@ -24,7 +28,7 @@ export let Amount = styled.Text<TransactionType>`
     font-family: ${({theme}) => theme.fonts.regular};
     font-size: ${RFValue(20)}px;
     color: ${({theme, type}) => 
-        type === 'positive' ?
+        type === 'down' ?
             theme.colors.success
         :
             theme.colors.attention
@@ -52,9 +56,9 @@ export let IconWrapper = styled.View`
     justify-content: center;
 `;
 
-export let Icon = styled(Feather)`
+export let Icon = styled(Feather)<CategoryIcons>`
     font-size: ${RFValue(18)}px;
-    color: ${({theme}) => theme.colors.text};
+    color: ${({iconColor}) => iconColor};
 `;
 
 export let CategoryName = styled.Text`

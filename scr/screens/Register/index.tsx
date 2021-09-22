@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     Alert,
     Keyboard,
@@ -8,6 +9,8 @@ import {
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import uuid from 'react-native-uuid';
 
 import { CategorySelector } from '../../components/Form/CategorySelector';
 import { Button } from '../../components/Form/Button';
@@ -25,6 +28,10 @@ import { InputControlled } from '../../components/Form/InputControlled';
 interface FormData {
     name: string;
     amount: string;
+}
+
+type NavigationProps = {
+    navigate: (screen: string) => void;
 }
 
 let schema = Yup.object().shape({
@@ -46,13 +53,18 @@ export function Register() {
 
     let [modalVisible, setModalVisible] = useState(false);
 
+    let collectionKey = '@gofinancesapp:transactions';
+
     let {
         control,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm({
         resolver: yupResolver(schema)
     });
+
+    let navigation = useNavigation<NavigationProps>();
 
     function handleSelectType(type: 'up' | 'down'){
         setSelectedType(type);
@@ -62,7 +74,7 @@ export function Register() {
         setModalVisible(!modalVisible);
     };
 
-    function handleRegister(form: FormData) {
+    async function handleRegister(form: FormData) {
         if(!selectedType){
             return Alert.alert('Selecione O Tipo Da Transação!');
         };
@@ -71,13 +83,47 @@ export function Register() {
         };
 
         let data = {
+            id: String(uuid.v4()),
             name: form.name,
             amount: form.amount,
-            selectedType,
-            category: selectedCategory.key
+            type: selectedType,
+            category: selectedCategory.key,
+            date: new Date()
         };
-        console.log(data);
+        
+        try {
+
+            let temp = await AsyncStorage.getItem(collectionKey);
+            let dataCheck = temp ? JSON.parse(temp) : [];
+            let dataPersist = [
+                ...dataCheck,
+                data
+            ];
+
+            await AsyncStorage.setItem(collectionKey, JSON.stringify(dataPersist));
+
+            reset();
+            setSelectedType('');
+            setSelectedCategory({
+                key: 'category',
+                name: 'Categoria'
+            });
+
+            navigation.navigate('Início');
+
+        } catch (error) {
+            console.log(error);
+            Alert.alert("Não Foi Possível Salvar As Informações!");
+        };
     };
+
+    useEffect(() => {
+        async function loadData(){
+          await AsyncStorage.getItem(collectionKey);
+        };
+        loadData();
+
+    }, []);
 
     return (
         <TouchableWithoutFeedback

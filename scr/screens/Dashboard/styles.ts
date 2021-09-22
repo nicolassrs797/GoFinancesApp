@@ -77,13 +77,13 @@ export let HighlightCards = styled.ScrollView.attrs({
 })`
     width: 100%;
     position: absolute;
-    margin-top: ${RFValue(130)}px;
+    margin-top: ${RFValue(140)}px;
 `;
 
 export let Transactions = styled.View`
     flex: 1;
     padding: ${RFValue(0)}px ${RFValue(24)}px;
-    margin-top : ${RFPercentage(23)}px;
+    margin-top : ${RFPercentage(18)}px;
 `;
 
 export let Title   = styled.Text`
@@ -102,4 +102,10 @@ export let TransactionList = styled(
     }
 })`
 
+`;
+
+export let LoadingContainer = styled.View`
+    flex: 1;
+    align-items: center;
+    justify-content: center;
 `;

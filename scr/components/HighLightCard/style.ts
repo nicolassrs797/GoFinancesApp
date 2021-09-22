@@ -69,16 +69,6 @@ export let Amount = styled.Text<CardProps>`
     };
 `;
 
-export let ValueAmount = styled.Text<CardProps>`
-    font-family: ${({theme}) => theme.fonts.medium};
-    color: ${({theme, type}) => 
-        type === 'total' ?
-            theme.colors.shape
-        :
-            theme.colors.shapeGrey
-    };
-`;
-
 export let LastTransaction = styled.Text<CardProps>`
     font-family: ${({theme}) => theme.fonts.regular};
     font-size: ${RFValue(12)}px;
